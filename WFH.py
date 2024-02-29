@@ -108,10 +108,16 @@ for i in all_days:
     if i[2] == 'Bereavement':
         bereavement_count += 1
 
+# Count the number of Vacation days
+vacation_count = 0
+for i in all_days:
+    if i[2] == 'Vacation':
+        vacation_count += 1
+
 # Count the number of holidays
 holiday_count = 0
 for i in all_days:
-    if i[2] != 'Bereavement' and i[2] != 'Work From Home' and i[2] != 'Work From Office' and i[2] != 'None':
+    if i[2] != 'Bereavement' and i[2] != 'Work From Home' and i[2] != 'Work From Office' and i[2] != 'None' and i[2] != 'Vacation':
         holiday_count += 1
 
 
@@ -120,6 +126,7 @@ all_days = [i for i in all_days if i[2] != 'Work From Office']
 
 all_days.append(['Total Work From Home Days:', WFH_count])
 all_days.append(['Total Work From Office Days:', WFO_count])
+all_days.append(['Total Vacation Days:', vacation_count])
 all_days.append(['Total Bereavement Days:', bereavement_count])
 all_days.append(['Total Holidays:', holiday_count])
 
