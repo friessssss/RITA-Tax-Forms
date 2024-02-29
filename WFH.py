@@ -62,20 +62,13 @@ with open(file_name, 'r') as file:
     for row in reader:
         holidays.append(row)
         
-holidays1 = [] #List of all the holidays and vacation days (Formatted days < 10 with a 0 in front)
-holidays2 = [] #List of all the holidays and vacation day reasons
-holidays_temp = []
+# Format the holidays list to match the format of the all_days list
 holidays_final = []
-
-for i in holidays:
-    holidays1.append(i[0].split())
-for i in holidays:
-    holidays2.append(i[1])
 for i in range(len(holidays)):
-    holidays_temp.append(holidays1[i][0] + ',' + holidays1[i][1] + ',' + holidays2[i])
-for i in holidays_temp:
-    holidays_final.append(i.split(','))
-
+    holidays_final.append(['', '', ''])
+    holidays_final[i][2] = holidays[i][1]
+    holidays_final[i][0] = holidays[i][0].split()[0]
+    holidays_final[i][1] = holidays[i][0].split()[1]
 
 # Remove days worked in office from list of all days in the year (Change reason for Out of Office to Work From Office)
 for i in range(len(all_days)):
